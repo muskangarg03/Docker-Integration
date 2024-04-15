@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  demo:
+    build: .
+    ports:
+      - "8087:8087"
+    networks:
+      - demo-network
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_USERNAME: muskan
+      MYSQL_ROOT_PASSWORD: 1234  # Set a password for the root user
+      MYSQL_DATABASE: springJPA
+    ports:
+      - "3307:3306"
+    networks:
+      - demo-network
+
+networks:
+  demo-network:
+    driver: bridge
